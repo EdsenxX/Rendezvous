@@ -116,7 +116,7 @@ export default function Home() {
                   <div className="bg-white h-full w-0 absolute top-0 left-0 group-hover:w-full transition-all duration-300 -z-10"></div>
                 </button>
                 <button className="w-[200px] text-sm p-2 border-white border-2 group relative hover:text-black uppercase font-bold">
-                Watch Video
+                  Watch Video
                   <div className="bg-white h-full w-0 absolute top-0 left-0 group-hover:w-full transition-all duration-300 -z-10"></div>
                 </button>
               </div>
@@ -144,8 +144,52 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <main className="p-20">
-        <p>This is the main page</p>
+      <main className="px-20 py-10">
+        <section>
+          <h2 className="text-2xl font-bold uppercase mb-2">
+            Coming Soon to Theaters
+          </h2>
+          <div className="flex gap-4">
+            <div className="relative w-[300px] h-[500px]">
+              <img
+                src="https://www.dreamworks.com/storage/cms-uploads/dog-man-poster-thumbnail.jpg"
+                alt="dog-man-poster-thumbnail"
+                className="w-full h-full"
+              />
+              <div className="text-white absolute bottom-0 left-0 w-full p-2 uppercase">
+                <h3 className="text-lg font-bold">Dog Man</h3>
+                <p className="text-sm">In theaters january 31</p>
+              </div>
+            </div>
+            <div className="relative w-[300px] h-[500px]">
+                <img
+                  src="https://www.dreamworks.com/storage/cms-uploads/the-bad-guys-2-poster-thumbnail.jpg"
+                  alt="the-bad-guys-2-poster-thumbnail"
+                  className="w-full h-full"
+                />
+              <div className="text-white absolute bottom-0 left-0 w-full p-2 uppercase">
+                <h3 className="text-lg font-bold">The Bad Guys 2</h3>
+                <p className="text-sm">In theaters this summer</p>
+              </div>
+            </div>
+            <div className="relative w-[300px] h-5300px]">
+                <img
+                  src="https://irs.www.warnerbros.com/keyart-jpeg/movies/media/browser/companion_keyart_0.jpg"
+                  alt="the-bad-guys-2-poster-thumbnail"
+                  className="w-full h-full"
+                />
+              <div className="text-white absolute bottom-0 left-0 w-full p-2 uppercase">
+                <h3 className="text-lg font-bold">The Bad Guys 2</h3>
+                <p className="text-sm">In theaters this summer</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2 className="text-2xl font-bold uppercase mb-2">
+            Movie & TV Favorites
+          </h2>
+        </section>
       </main>
     </div>
   );

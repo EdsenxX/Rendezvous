@@ -40,7 +40,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav ref={navBarRef} className="fixed w-full top-0 flex justify-between items-center p-5 text-white transition-all">
+    <nav ref={navBarRef} className="fixed w-full top-0 flex justify-between items-center p-5 text-white transition-all z-20">
       <div>
         <p className="text-2xl font-bold">Rendezvous</p>
       </div>
