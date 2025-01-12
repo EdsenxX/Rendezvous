@@ -8,7 +8,7 @@ import "@Styles/pages/home.sass";
 
 export default function Home() {
   const [currentVideoIdx, setCurrentVideoIdx] = useState(0);
-  const videoRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [rate, setRate] = useState(0);
 
   const videos = [
@@ -30,8 +30,8 @@ export default function Home() {
       path: "https://futuralab.s3.us-east-1.amazonaws.com/Rendezvous/dance.mp4",
       type: "video/mp4",
       name: "dance",
-      title: "Dance",
-      description: "Woman dancing is a dance video",
+      title: "Woman Dance",
+      description: "Indian woman dancing is a dance video",
     },
     {
       path: "https://futuralab.s3.us-east-1.amazonaws.com/Rendezvous/running.mp4",
@@ -46,19 +46,18 @@ export default function Home() {
       name: "fishes",
       title: "Fishes",
       description: "Fishes in a pond is a fishes video",
-    }
+    },
   ];
 
   useEffect(() => {
     const handleTimeUpdate = () => {
       if (videoRef.current) {
         const current = videoRef.current.currentTime;
-
         const calculatedRate = (current / videoRef.current.duration) * 100;
+
         if (calculatedRate >= 99) {
           setRate(100);
-          const totalVideos = videos.length;
-          setCurrentVideoIdx((prevIdx) => (prevIdx + 1) % totalVideos);
+          setCurrentVideoIdx((prevIdx) => (prevIdx + 1) % videos.length);
         } else {
           setRate(calculatedRate);
         }
@@ -88,10 +87,10 @@ export default function Home() {
 
   return (
     <div>
-      <NavBar />
-      <main className="w-full h-full">
-        <div className="container">
-          <div className="w-full h-screen container">
+      <div className="w-full h-full">
+        <NavBar className="h-[10vh]" />
+        <div className="relative h-screen">
+          <div className="w-full h-full relative">
             <video
               ref={videoRef}
               key={videos[currentVideoIdx].name}
@@ -106,23 +105,25 @@ export default function Home() {
                 type={videos[currentVideoIdx].type}
               />
             </video>
-            <div className="w-full h-full flex flex-col justify-center px-20 text-white">
+            <div className="w-full h-full flex flex-col justify-center px-5 md:px-10 lg:px-20 text-white">
               <h2 className="text-5xl font-bold uppercase mb-2">
                 {videos[currentVideoIdx].title}
               </h2>
               <p>{videos[currentVideoIdx].description}</p>
-              <div className="flex gap-4 mt-10">
-                <button className="w-[200px] p-2 border-white border-2">
+              <div className="flex gap-4 mt-5">
+                <button className="w-[200px] text-sm p-2 border-white border-2 group relative hover:text-black uppercase font-bold">
                   Official Site
+                  <div className="bg-white h-full w-0 absolute top-0 left-0 group-hover:w-full transition-all duration-300 -z-10"></div>
                 </button>
-                <button className="w-[200px] p-2 border-white border-2">
-                  Watch Video
+                <button className="w-[200px] text-sm p-2 border-white border-2 group relative hover:text-black uppercase font-bold">
+                Watch Video
+                  <div className="bg-white h-full w-0 absolute top-0 left-0 group-hover:w-full transition-all duration-300 -z-10"></div>
                 </button>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 p-10 w-full flex justify-center">
-            <div className="w-[80%] text-white grid grid-flow-col gap-3">
+          <div className="absolute bottom-0 left-0 w-full flex justify-center">
+            <div className="w-[98%] md:w-[90%] lg:w-[80%] text-white grid grid-flow-col gap-3">
               {videos.map((video, idx) => (
                 <div
                   key={video.name}
@@ -142,6 +143,9 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+      <main className="p-20">
+        <p>This is the main page</p>
       </main>
     </div>
   );

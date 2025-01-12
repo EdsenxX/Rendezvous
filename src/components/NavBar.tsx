@@ -1,6 +1,6 @@
 "use client";
 // Dependencies
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 
 function SideBar({ handleClose }) {
@@ -24,9 +24,23 @@ function SideBar({ handleClose }) {
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const navBarRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      // add className to navBarRef
+      if (navBarRef.current) {
+        if (window.scrollY > 100) {
+          navBarRef.current.classList.add('bg-[#2b4455]');
+        } else {
+          navBarRef.current.classList.remove('bg-[#2b4455]');
+        }
+      }
+    });
+  }, []);
 
   return (
-    <nav className="flex justify-between items-center p-5 bg-[#2b4455] text-white">
+    <nav ref={navBarRef} className="fixed w-full top-0 flex justify-between items-center p-5 text-white transition-all">
       <div>
         <p className="text-2xl font-bold">Rendezvous</p>
       </div>
